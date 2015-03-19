@@ -122,9 +122,23 @@ class Cnpj:
         last_two_digits = Cnpj.calculate_last_digits(base_cnpj)
         base_cnpj += ''.join(last_two_digits)
 
-        print base_cnpj
         return base_cnpj
 
+    @staticmethod
+    def generate_valid_cnpj_with_no_branch():
+        """
+        Generates a random valid cnpj using only 0001 as company's branch
+        :return: a valid cnpj
+        """
+
+        base_cnpj = ''
+        for x in range(0, 8):
+            base_cnpj += str(random.randint(0, 9))
+        base_cnpj += '0001'
+        last_two_digits = Cnpj.calculate_last_digits(base_cnpj)
+        base_cnpj += ''.join(last_two_digits)
+
+        return base_cnpj
 
     @staticmethod
     def format(cnpj):
