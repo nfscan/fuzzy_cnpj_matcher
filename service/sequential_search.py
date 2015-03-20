@@ -1,3 +1,4 @@
+import time
 from fuzzyset import FuzzySet
 
 __author__ = 'paulo.rodenas'
@@ -7,16 +8,16 @@ class SequentialFuzzyCnpjMatcher:
 
     def __init__(self):
         self.__cnpj_bases = [
-            '../bulk/cnpjs_base_00000000.txt',
-            '../bulk/cnpjs_base_10000000.txt',
-            '../bulk/cnpjs_base_20000000.txt',
-            '../bulk/cnpjs_base_30000000.txt',
-            '../bulk/cnpjs_base_40000000.txt',
-            '../bulk/cnpjs_base_50000000.txt',
-            '../bulk/cnpjs_base_60000000.txt',
-            '../bulk/cnpjs_base_70000000.txt',
-            '../bulk/cnpjs_base_80000000.txt',
-            '../bulk/cnpjs_base_90000000.txt',
+            '../bulk/cnpjs_base_0000000.txt',
+            '../bulk/cnpjs_base_1000000.txt',
+            '../bulk/cnpjs_base_2000000.txt',
+            '../bulk/cnpjs_base_3000000.txt',
+            '../bulk/cnpjs_base_4000000.txt',
+            '../bulk/cnpjs_base_5000000.txt',
+            '../bulk/cnpjs_base_6000000.txt',
+            '../bulk/cnpjs_base_7000000.txt',
+            '../bulk/cnpjs_base_8000000.txt',
+            '../bulk/cnpjs_base_9000000.txt',
         ]
 
         self.__fuzzy_matcher = None
@@ -26,9 +27,22 @@ class SequentialFuzzyCnpjMatcher:
 
         for cnpj_base_str in self.__cnpj_bases:
             with open(cnpj_base_str) as f:
+                # temp variables
+                match = None
+                start_time = time.time()
+
+                # Searching
                 self.__log('Searching for %s on %s' % (cnpj, cnpj_base_str), debug)
                 self.__fuzzy_matcher = FuzzySet(f.read().splitlines())
-                best_matches.append(self.__fuzzy_matcher.get(cnpj)[0][1])
+
+                match = self.__fuzzy_matcher.get(cnpj)
+                elapsed_time = time.time() - start_time
+
+                self.__log('Best match for this file is %s and it took %d seconds' % (match, elapsed_time), debug)
+                # Appending to the best matches so far
+                if not match is None:
+                    for m in match:
+                        best_matches.append(m[1])
 
         # Performing Fuzzy string match on the best results of each cnpj base file
         self.__fuzzy_matcher = FuzzySet(best_matches)
