@@ -14,9 +14,9 @@ CNPJs are often used on a variety of different systems to validate whether it's 
 ### Dependencies
 
 ```Shell
-# Parallel Python  - http://www.parallelpython.com/
+# Parallel Python   - http://www.parallelpython.com/
 pip install pp
 
-# Fuzzyset  - https://github.com/axiak/fuzzyset
+# Fuzzyset          - https://github.com/axiak/fuzzyset
 easy_install fuzzyset
 ```
