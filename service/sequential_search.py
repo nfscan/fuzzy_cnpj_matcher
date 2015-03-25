@@ -7,18 +7,12 @@ __author__ = 'paulo.rodenas'
 class SequentialFuzzyCnpjMatcher:
 
     def __init__(self):
-        self.__cnpj_bases = [
-            '../bulk/cnpjs_base_0000000.txt',
-            '../bulk/cnpjs_base_1000000.txt',
-            '../bulk/cnpjs_base_2000000.txt',
-            '../bulk/cnpjs_base_3000000.txt',
-            '../bulk/cnpjs_base_4000000.txt',
-            '../bulk/cnpjs_base_5000000.txt',
-            '../bulk/cnpjs_base_6000000.txt',
-            '../bulk/cnpjs_base_7000000.txt',
-            '../bulk/cnpjs_base_8000000.txt',
-            '../bulk/cnpjs_base_9000000.txt',
-        ]
+        self.__cnpj_bases = []
+
+        for x in xrange(0, 100):
+            idx = x * 1000000
+            self.__cnpj_bases.append('../bulk/cnpjs_base_' + str(idx).zfill(7) +
+                                     '.txt')
 
         self.__fuzzy_matcher = None
 
@@ -28,7 +22,6 @@ class SequentialFuzzyCnpjMatcher:
         for cnpj_base_str in self.__cnpj_bases:
             with open(cnpj_base_str) as f:
                 # temp variables
-                match = None
                 start_time = time.time()
 
                 # Searching
@@ -38,7 +31,8 @@ class SequentialFuzzyCnpjMatcher:
                 match = self.__fuzzy_matcher.get(cnpj)
                 elapsed_time = time.time() - start_time
 
-                self.__log('Best match for this file is %s and it took %d seconds' % (match, elapsed_time), debug)
+                self.__log('Best match for this file is %s and it took %d seconds'
+                           % (match, elapsed_time), debug)
                 # Appending to the best matches so far
                 if not match is None:
                     for m in match:
@@ -46,7 +40,7 @@ class SequentialFuzzyCnpjMatcher:
 
         # Performing Fuzzy string match on the best results of each cnpj base file
         self.__fuzzy_matcher = FuzzySet(best_matches)
-        return self.__fuzzy_matcher.get(cnpj_base_str)[0]
+        return self.__fuzzy_matcher.get(cnpj)[0]
 
     def __log(self, msg, debug=False):
         if debug:
