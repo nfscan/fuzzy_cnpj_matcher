@@ -13,6 +13,10 @@ class SequentialFuzzyCnpjMatcher:
     """
 
     def __init__(self):
+        """
+        Default constructor
+        :return: a SequentialFuzzyCnpjMatcher instance
+        """
         self.__cnpj_bases = []
 
         for x in xrange(0, 100):
@@ -23,6 +27,12 @@ class SequentialFuzzyCnpjMatcher:
         self.__fuzzy_matcher = None
 
     def match_cnpj(self, cnpj, debug=False):
+        """
+        Search the closest valid CNPJ given a invalid one
+        :param cnpj: a invalid CNPJ
+        :param debug: whether you want to see debugging logs or not
+        :return: a list of the most similar valid CNPJs to the one you've provided
+        """
         best_matches = []
 
         for cnpj_base_str in self.__cnpj_bases:
@@ -49,5 +59,11 @@ class SequentialFuzzyCnpjMatcher:
         return self.__fuzzy_matcher.get(cnpj)[0]
 
     def __log(self, msg, debug=False):
+        """
+        Prints a message to console depending on debug variable
+        :param msg: a message string
+        :param debug: a boolean value
+        :return:
+        """
         if debug:
             print msg
