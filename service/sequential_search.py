@@ -5,6 +5,12 @@ __author__ = 'paulo.rodenas'
 
 
 class SequentialFuzzyCnpjMatcher:
+    """
+    Class that performs fuzzy string matching on CNPJs sequentially. For small
+    fuzzyset this class is the easiest way to get started. However if you going
+    for a large fuzzyset we strongly recommend using LocalParallelFuzzyCnpjMatcher
+     instead.
+    """
 
     def __init__(self):
         self.__cnpj_bases = []

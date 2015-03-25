@@ -4,6 +4,9 @@ import random
 
 
 class Cnpj:
+    """
+    Utilty class defines certain methods related to Brazilian CNPJs validation
+    """
 
     @staticmethod
     def validate(cnpj):
