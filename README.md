@@ -2,7 +2,7 @@
 A proof of concept to demonstrate the use of Fuzzy string matching for CNPJ typos.
 
 ### Purpose
-The idea of this prototype is to create a way to correct a CNPJ as user types. The inspiration would be the "Did you mean?" feature we often see on Google when looking something up.
+The idea of this prototype is to create a way to correct a CNPJ as user types it. The inspiration would be the "Did you mean?" feature we often see on Google when looking something up.
 
 ![](github_image/example.png?raw=true)
 
