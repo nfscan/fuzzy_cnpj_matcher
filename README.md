@@ -20,3 +20,7 @@ pip install pp
 # Fuzzyset          - https://github.com/axiak/fuzzyset
 easy_install fuzzyset
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/pauloubuntu/fuzzy_cnpj_matcher/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
