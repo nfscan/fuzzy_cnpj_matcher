@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/nfscan/fuzzy_cnpj_matcher.svg)](https://travis-ci.org/nfscan/fuzzy_cnpj_matcher)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/nfscan/fuzzy_cnpj_matcher/master/LICENSE)
 [![GitHub forks](https://img.shields.io/github/forks/nfscan/fuzzy_cnpj_matcher.svg)](https://github.com/nfscan/fuzzy_cnpj_matcher/network)
+[![Coverage Status](https://coveralls.io/repos/nfscan/fuzzy_cnpj_matcher/badge.svg)](https://coveralls.io/r/nfscan/fuzzy_cnpj_matcher)
 
 A proof of concept to demonstrate the use of Fuzzy string matching for CNPJ typos.
 
