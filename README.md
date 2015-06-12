@@ -1,4 +1,6 @@
 # fuzzy_cnpj_matcher
+[![Build Status](https://travis-ci.org/nfscan/fuzzy_cnpj_matcher.svg)](https://travis-ci.org/nfscan/fuzzy_cnpj_matcher)
+
 A proof of concept to demonstrate the use of Fuzzy string matching for CNPJ typos.
 
 ### Purpose
