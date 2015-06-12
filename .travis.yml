@@ -1,0 +1,13 @@
+language: python
+python:
+  - "2.6"
+  - "2.7"
+  - "3.2"
+  - "3.3"
+  - "3.4"
+  - "nightly"
+install:
+  - "pip install -r requirements.txt"
+  - "easy_install fuzzyset"
+
+script: cd tests && nosetests --exclude="test_sequential_fuzzy_matcher.py" --exclude="test_localparallel_fuzzy_matcher.py"
