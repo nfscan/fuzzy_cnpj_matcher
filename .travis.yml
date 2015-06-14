@@ -8,3 +8,6 @@ install:
   - "easy_install pp"
 
 script: cd tests && nosetests --exclude="test_sequential_fuzzy_matcher.py" --exclude="test_localparallel_fuzzy_matcher.py"
+
+after_success:
+  coveralls
